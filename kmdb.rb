@@ -70,13 +70,86 @@
 # Delete existing data, so you'll start fresh each time this script is run.
 # Use `Model.destroy_all` code.
 # TODO!
+Studio.destroy_all
+Movie.destroy_all
+Actor.destroy_all
+Role.destroy_all
 
 # Generate models and tables, according to the domain model.
 # TODO!
+puts "studios: #{Studio.all.count}" 
+puts "movies: #{Movie.all.count}" 
+puts "actors: #{Actor.all.count}" 
+puts "roles: #{Role.all.count}" 
 
 # Insert data into the database that reflects the sample data shown above.
 # Do not use hard-coded foreign key IDs.
 # TODO!
+new_studios = studios.new
+new_studios ["name"] = "Warner Bros."
+new_studios.save
+
+warner = Studio.find_by({ "name" => "Warner Bros." })
+
+# MOVIES
+
+new_movies = Movie.new
+new_movies ["title"] = "Batman Begins"
+new_movies ["year_released"] = "2005"
+new_movies ["rated"] = "PG-13"
+new_movies ["studio_id"] = warner["1"]
+new_movies.save
+
+new_movies = Movie.new
+new_movies ["title"] = "The Dark Knight"
+new_movies ["year_released"] = "2008"
+new_movies ["rated"] = "PG-13"
+new_movies ["studio_id"] = warner["1"]
+new_movies.save
+
+new_movies = Movie.new
+new_movies ["title"] = "The Dark Knight Rises"
+new_movies ["year_released"] = "2012"
+new_movies ["rated"] = "PG-13"
+new_movies ["studio_id"] = warner["1"]
+new_movies.save
+
+# Batman Begins
+
+new_actors = Actor.new
+new_actors ["name"] = "Christian Bale"
+new_actors.save
+
+new_actors = Actor.new
+new_actors ["name"] = "Michael Caine"
+new_actors.save
+
+new_actors = Actor.new
+new_actors ["name"] = "Liam Neeson"
+new_actors.save
+
+new_actors = Actor.new
+new_actors ["name"] = "Katie Holmes"
+new_actors.save
+
+new_actor = Actor.new
+new_actors ["name"] = "Gary Oldman"
+new_actors.save
+
+batman_begins = Movie.find_by({ "title" => "Batman Begins" })
+actor = Studio.find_by({ "name" => "Warner Bros." })
+warner = Studio.find_by({ "name" => "Warner Bros." })
+
+new_roles = Role.new
+new_roles ["movie_id"] = "The Dark Knight"
+new_roles ["actor_id"] = "2008"
+new_roles ["character_name"] = "PG-13"
+new_roles ["studio_id"] = warner["id"]
+new_roles.save
+
+# The Dark Knight
+
+# The Dark Knight Rises
 
 # Prints a header for the movies output
 puts "Movies"
