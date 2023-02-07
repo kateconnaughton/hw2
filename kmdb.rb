@@ -367,9 +367,9 @@ puts ""
 movies = Movie.all
 
 for movie in movies
-    movie_title = Movie.find_by({"id" => movie["title"]})
-    year_released = Movie.find_by({"id" => movie["year_released"]})
-    studio_id = Studio.find_by({"id" => movie["studio_id"]})
+    movie_title = movie["title"]
+    year_released = movie["year_released"]
+    studio_id = Movie.find_by({"id" => movie["studio_id"]})
     studio_name = studio_id["name"]
     puts "- #{movie_title} #{year_released} #{studio_name}"
     
